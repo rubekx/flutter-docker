@@ -1,7 +1,27 @@
 FROM ubuntu:20.04
 
+# The option 'noninteractive' is set as default value for the build-time only.
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Update and upgrade the system
+RUN apt-get update && apt-get upgrade -y
+
+# Installing apt-utils
+RUN apt-get install -yq apt-utils
+
 # Prerequisites
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
+RUN apt-get update && apt-get install -yq \
+    git \
+    zip \
+    curl \
+    nano \
+    unzip \
+    g++ \
+    apt-utils \ 
+    xz-utils \
+    zip libglu1-mesa \
+    openjdk-8-jdk \ 
+    wget
 
 # Set up new user
 RUN useradd -ms /bin/bash developer
