@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: ${APP_CONTAINER_NAME}
+    build: .
+    restart: unless-stopped
+    environment:
+      - TZ=America/Fortaleza
+    volumes:
+      - ./workspace:/home/developer/workspace
